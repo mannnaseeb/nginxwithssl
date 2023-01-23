@@ -1,0 +1,18 @@
+server {
+        listen 80;
+        listen 443;
+        root /var/www/html;
+        index  index.html index.htm index.nginx-debian.html;
+        server_name naseeb.tk;
+
+        error_log /var/log/nginx/naseeb.tk_error.log;
+        access_log /var/log/nginx/naseeb.tk_access.log;
+
+        client_max_body_size 100M;
+        location / {
+                try_files $uri $uri/ /index.php?$args;
+        }
+ssl on;
+ssl_certificate /home/ubuntu/ssl/naseeb.crt;
+ssl_certificate_key /home/ubuntu/ssl/naseeb.key;
+}
